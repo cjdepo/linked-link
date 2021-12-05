@@ -130,6 +130,17 @@ class LinkedList
         prev_node.next_node = new_node
         new_node.next_node = current_node
     end
+
+    def remove_at(index)
+        x = 1
+        current_node = @head
+        while x < index
+            x += 1
+            prev_node = current_node
+            current_node = current_node.next_node
+        end
+        prev_node.next_node = current_node.next_node
+    end
     
         
 end
@@ -153,6 +164,7 @@ linky.append(2)
 linky.append(3)
 linky.prepend(1)
 linky.insert_at(5, 2)
+linky.remove_at(2)
 p linky
 p linky.contains?(3)
 p linky.find(2)

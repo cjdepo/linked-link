@@ -119,16 +119,23 @@ class LinkedList
     end
 
     def insert_at(value, index)
+        new_node = Node.new(value)
         x = 1
         current_node = @head
-        while current_node != index
+        while x < index
+            x += 1
+            prev_node = current_node
             current_node = current_node.next_node
+        end
+        prev_node.next_node = new_node
+        new_node.next_node = current_node
     end
-
-
-
-
+    
+        
 end
+
+
+
 
 class Node
 
@@ -145,6 +152,8 @@ linky = LinkedList.new
 linky.append(2)
 linky.append(3)
 linky.prepend(1)
+linky.insert_at(5, 2)
+p linky
 p linky.contains?(3)
 p linky.find(2)
 p linky.to_s
